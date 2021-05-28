@@ -46,8 +46,8 @@ public class TaskController {
 
     @PostMapping("/edit-task")
     public String editTask(@RequestParam("id") int taskId, @RequestParam("name") String name, @RequestParam("description") String description,
-                           @RequestParam("priority") String priority, @RequestParam("start_time") String start_time,
-                           @RequestParam("end_time") String end_time, @RequestParam("estimated-hours-day") int estimatedHoursDay,
+                           @RequestParam("priority") String priority, @RequestParam("start_time") String startDate,
+                           @RequestParam("end_time") String endDate, @RequestParam("estimated-hours-day") int estimatedHoursDay,
                            @RequestParam("action") String action, @RequestParam("count-weekends") String countWeekends, HttpSession session) {
 
         try {
@@ -57,7 +57,7 @@ public class TaskController {
 
             // Save changes to row
             if (action.equals("Save")) {
-                TaskService.editTask(taskId, name, description, priority, start_time, end_time, estimatedHoursDay, countWeekends, project.getProjectId(), user.getId());
+                TaskService.editTask(taskId, name, description, priority, startDate, endDate, estimatedHoursDay, countWeekends, project.getProjectId(), user.getId());
             }
             // Deletes row from project
             else if (action.equals("Delete")) {

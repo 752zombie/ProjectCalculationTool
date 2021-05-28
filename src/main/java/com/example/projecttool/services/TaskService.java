@@ -43,7 +43,7 @@ public class TaskService {
         boolean canEdit = ShareProjectRepository.getAccessLevel(projectId, userId).equals("read-and-edit");
         boolean isOwner = ProjectService.isOwner(projectId, userId);
         if (isOwner || canEdit) {
-            TaskRepository.editTask(taskId, taskName, description, priority, start_time, end_time, estimatedHoursDay, countWeekends);
+            TaskRepository.editTask(new Task(taskId, taskName, description, start_time, end_time, priority, estimatedHoursDay, countWeekends));
         }
     }
 
@@ -59,7 +59,8 @@ public class TaskService {
         boolean isOwner = ProjectService.isOwner(projectId, userId);
 
         if (isOwner || canEdit) {
-            TaskRepository.addRowToTask(projectId, name, description, priority, start_time, end_time, estimatedHoursDay, countWeekends);
+            Task task = new Task(name, description, start_time, end_time, priority, estimatedHoursDay, countWeekends);
+            TaskRepository.addRowToTask(projectId, task);
         }
 
     }

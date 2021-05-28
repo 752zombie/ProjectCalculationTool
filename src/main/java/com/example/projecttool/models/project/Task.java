@@ -25,15 +25,24 @@ public class Task {
 
 
 
-    public Task(int id, String name, String description, String start_time, String end_time, String priority, int estimatedHours, int estimatedHoursPrDay, String countWeekends) {
+    public Task(int id, String name, String description, String start_time, String end_time, String priority, int estimatedHoursPrDay, String countWeekends) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.start_time = start_time;
         this.end_time = end_time;
-        this.end_time_calculated = end_time_calculated;
         this.priority = priority;
-        this.estimatedHoursTotal = estimatedHours;
+        this.estimatedHoursPrDay = estimatedHoursPrDay;
+        this.countWeekends = countWeekends;
+
+    }
+
+    public Task( String name, String description, String start_time, String end_time, String priority, int estimatedHoursPrDay, String countWeekends) {
+        this.name = name;
+        this.description = description;
+        this.start_time = start_time;
+        this.end_time = end_time;
+        this.priority = priority;
         this.estimatedHoursPrDay = estimatedHoursPrDay;
         this.countWeekends = countWeekends;
 

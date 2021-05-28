@@ -29,37 +29,37 @@ public class TaskRepository {
             int estimatedHoursPrDay = resultSet.getInt("estimated_hours_day");
             String countWeekends = resultSet.getString("count_weekends");
 
-           taskList.add(new Task(id, project_name, project_description, start_time, end_time, priority, estimatedHours, estimatedHoursPrDay, countWeekends));
+            Task task = new Task(id, project_name, project_description, start_time, end_time, priority, estimatedHoursPrDay, countWeekends);
+            task.setEstimatedHoursTotal(estimatedHours);
+            taskList.add(task);
         }
 
         return taskList;
     }
 
 
-    public static void editTask(int taskId, String taskName, String description, String priority, String start_time, String end_time,
-                                int estimatedHoursPrDay, String countWeekends) throws SQLException {
+    public static void editTask(Task task) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
 
         PreparedStatement statement = connection.prepareStatement("UPDATE tasks SET task_name = ?, " +
                 "task_description = ?, start_time = ?, end_time = ?, priority = ?, " +
                 "estimated_hours_day = ?, count_weekends = ? WHERE id = ?");
 
-        statement.setString(1, taskName);
-        statement.setString(2, description);
-        statement.setDate(3, java.sql.Date.valueOf(start_time));
-        statement.setDate(4, java.sql.Date.valueOf(end_time));
-        statement.setString(5, priority);
-        statement.setInt(6, estimatedHoursPrDay);
-        statement.setString(7, countWeekends);
-        statement.setInt(8, taskId);
+        statement.setString(1, task.getName());
+        statement.setString(2, task.getDescription());
+        statement.setDate(3, java.sql.Date.valueOf(task.getStart_time()));
+        statement.setDate(4, java.sql.Date.valueOf(task.getEnd_time()));
+        statement.setString(5, task.getPriority());
+        statement.setInt(6, task.getEstimatedHoursPrDay());
+        statement.setString(7, task.getCountWeekends());
+        statement.setInt(8, task.getId());
 
         statement.execute();
 
     }
 
 
-    public static void addRowToTask(int project_id, String task_name, String task_description, String priority, String start_time,
-             String end_time, int estimatedHoursPrDay, String countWeekends) throws SQLException {
+    public static void addRowToTask(int projectId, Task task) throws SQLException {
 
 
         Connection connection = DatabaseConnection.getConnection();
@@ -69,14 +69,14 @@ public class TaskRepository {
                 "task_name, task_description, start_time, end_time, priority, " +
                 "estimated_hours_day, count_weekends) values (?, ?, ?, ?, ?, ?, ?, ?)");
 
-        statement.setInt(1, project_id);
-        statement.setString(2, task_name);
-        statement.setString(3, task_description);
-        statement.setDate(4, java.sql.Date.valueOf(start_time));
-        statement.setDate(5, java.sql.Date.valueOf(end_time));
-        statement.setString(6, priority);
-        statement.setInt(7, estimatedHoursPrDay);
-        statement.setString(8, countWeekends);
+        statement.setInt(1, projectId);
+        statement.setString(2, task.getName());
+        statement.setString(3, task.getDescription());
+        statement.setDate(4, java.sql.Date.valueOf(task.getStart_time()));
+        statement.setDate(5, java.sql.Date.valueOf(task.getEnd_time()));
+        statement.setString(6, task.getPriority());
+        statement.setInt(7, task.getEstimatedHoursPrDay());
+        statement.setString(8, task.getCountWeekends());
 
         statement.execute();
 
