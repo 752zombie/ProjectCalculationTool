@@ -15,10 +15,10 @@ public class SubtaskService {
     }
 
     public static void addNewSubtaskToTask(int taskId, String subtaskName, String subtaskDescription,
-                                           String startTime, String endTime, int hoursToComplete,
+                                           String startDate, String endDate, int hoursToComplete,
                                            int projectId, int userId) throws SQLException {
         if (ProjectService.canEdit(projectId, userId)) {
-            SubtaskRepository.addNewSubtaskToTask(taskId, new Subtask(subtaskName, subtaskDescription, java.sql.Date.valueOf(startTime), java.sql.Date.valueOf(endTime), hoursToComplete));
+            SubtaskRepository.addNewSubtaskToTask(taskId, new Subtask(subtaskName, subtaskDescription, java.sql.Date.valueOf(startDate), java.sql.Date.valueOf(endDate), hoursToComplete));
         }
 
     }
@@ -27,7 +27,9 @@ public class SubtaskService {
                                      int hoursToComplete, int projectId, int userId) throws SQLException{
 
         if (ProjectService.canEdit(projectId, userId)) {
-            SubtaskRepository.updateSubtask(subtaskId, name, description, startDate, endDate, hoursToComplete);
+            Subtask subtask = new Subtask(name, description, java.sql.Date.valueOf(startDate), java.sql.Date.valueOf(endDate), hoursToComplete);
+            subtask.setId(subtaskId);
+            SubtaskRepository.updateSubtask(subtask);
         }
 
     }
