@@ -92,7 +92,7 @@ public class TaskController {
             Project project = (Project) session.getAttribute("project");
 
             // Adds rows to DB
-            TaskService.addRowToTask(project.getProjectId(), name, description, priority, start_time, end_time, estimatedHoursDay, countWeekends, user.getId());
+            TaskService.createTask(project.getProjectId(), name, description, priority, start_time, end_time, estimatedHoursDay, countWeekends, user.getId());
 
             // Directs tasks to View
             ArrayList<Task> projectTasks = TaskService.getTasks(project.getProjectId());

@@ -33,7 +33,7 @@ public class LoginController {
 
         try {
             //User created successfully and should now be logged in
-            User user = LoginService.attemptLogin(name, eMail, password);
+            User user = LoginService.createUser(name, eMail, password);
             session.setAttribute("user", user);
 
         } catch (SQLException e) {

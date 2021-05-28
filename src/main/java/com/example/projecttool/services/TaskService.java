@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class TaskService {
 
 
-    public static ArrayList<Task> getTasks(Integer projectId) throws SQLException {
+    public static ArrayList<Task> getTasks(int projectId) throws SQLException {
 
 
         ArrayList<Task> allTasks = TaskRepository.getTasks(projectId);
@@ -52,8 +52,8 @@ public class TaskService {
         TaskRepository.deleteTask(taskId);
     }
 
-    public static  void addRowToTask(int projectId, String name, String description, String priority, String start_time, String end_time,
-                             int estimatedHoursDay, String countWeekends, int userId) throws SQLException {
+    public static void createTask(int projectId, String name, String description, String priority, String start_time, String end_time,
+                                  int estimatedHoursDay, String countWeekends, int userId) throws SQLException {
 
         boolean canEdit = ShareProjectRepository.getAccessLevel(projectId, userId).equals("read-and-edit");
         boolean isOwner = ProjectService.isOwner(projectId, userId);

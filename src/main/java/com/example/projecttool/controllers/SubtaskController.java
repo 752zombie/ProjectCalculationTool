@@ -88,7 +88,7 @@ public class SubtaskController {
             User user = (User) session.getAttribute("user");
             Project project = (Project) session.getAttribute("project");
             Integer taskId = (Integer) session.getAttribute("taskId");
-            SubtaskService.addNewSubtaskToTask(taskId, name, description, startTime, endTime, hoursToComplete, project.getProjectId(), user.getId());
+            SubtaskService.createSubtask(taskId, name, description, startTime, endTime, hoursToComplete, project.getProjectId(), user.getId());
         }
 
         catch (SQLException e) {
