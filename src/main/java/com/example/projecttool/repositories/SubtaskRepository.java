@@ -2,6 +2,7 @@ package com.example.projecttool.repositories;
 
 import com.example.projecttool.models.project.Employee;
 import com.example.projecttool.models.project.Skill;
+import com.example.projecttool.models.project.Subtask;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -135,17 +136,17 @@ public class SubtaskRepository {
         return skills;
     }
 
-    public static void addNewSubtaskToTask(int taskId, String subtaskName, String subtaskDescription, String startTime, String endTime, int hoursToComplete) throws SQLException{
+    public static void addNewSubtaskToTask(int taskId, Subtask subtask) throws SQLException{
         Connection connection = DatabaseConnection.getConnection();
 
         PreparedStatement statement = connection.prepareStatement("INSERT INTO subtasks(task, subtask_name, subtask_description, start_time, " +
                 "end_time, hours_to_complete) VALUES (?, ?, ?, ?, ?, ?)");
         statement.setInt(1, taskId);
-        statement.setString(2, subtaskName);
-        statement.setString(3, subtaskDescription);
-        statement.setDate(4, java.sql.Date.valueOf(startTime));
-        statement.setDate(5, java.sql.Date.valueOf(endTime));
-        statement.setInt(6, hoursToComplete);
+        statement.setString(2, subtask.getName());
+        statement.setString(3, subtask.getDescription());
+        statement.setDate(4, subtask.getStartTime());
+        statement.setDate(5, subtask.getEndTime());
+        statement.setInt(6, subtask.getHoursToComplete());
         statement.execute();
     }
 

@@ -18,7 +18,7 @@ public class SubtaskService {
                                            String startTime, String endTime, int hoursToComplete,
                                            int projectId, int userId) throws SQLException {
         if (ProjectService.canEdit(projectId, userId)) {
-            SubtaskRepository.addNewSubtaskToTask(taskId, subtaskName, subtaskDescription, startTime, endTime, hoursToComplete);
+            SubtaskRepository.addNewSubtaskToTask(taskId, new Subtask(subtaskName, subtaskDescription, java.sql.Date.valueOf(startTime), java.sql.Date.valueOf(endTime), hoursToComplete));
         }
 
     }

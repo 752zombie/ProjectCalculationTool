@@ -25,6 +25,14 @@ public class Subtask {
         this.hoursToComplete = hoursToComplete;
     }
 
+    public Subtask(String name, String description, Date startTime, Date endTime, int hoursToComplete) {
+        this.name = name;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.description = description;
+        this.hoursToComplete = hoursToComplete;
+    }
+
 
 
     public String getDescription() {
