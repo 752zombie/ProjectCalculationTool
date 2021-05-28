@@ -33,7 +33,7 @@ public class ProjectController {
             User user = (User) session.getAttribute("user");
 
             // Creates a project
-           Project project = ProjectService.nameYourProject(user.getId(), projectName, projectStart, projectEnd);
+           Project project = ProjectService.createProject(user.getId(), projectName, projectStart, projectEnd);
 
            session.setAttribute("project", project);
 

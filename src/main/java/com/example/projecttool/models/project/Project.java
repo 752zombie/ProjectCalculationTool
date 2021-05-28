@@ -1,34 +1,24 @@
 package com.example.projecttool.models.project;
 
-import com.example.projecttool.models.user.User;
-import com.example.projecttool.repositories.TaskRepository;
-
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
-
 public class Project {
     int projectId;
     String name;
-    String startTime;
-    String endTime;
-    // The user who created the project
-    User owner;
-    // List of collaborators excluding owner
-    Map<Integer, User> collaborators;
+    String startDate;
+    String endDate;
 
-    public Project(int projectId, String name, String startTime, String endTime) {
+
+    public Project(int projectId, String name, String startDate, String endDate) {
         this.name = name;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.projectId = projectId;
     }
 
-    public List<Task> getTasks() throws SQLException {
-        return TaskRepository.getTasks(projectId);
+    public Project(String name, String startDate, String endDate) {
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
-
-
 
     public int getProjectId() {
         return projectId;
@@ -46,23 +36,12 @@ public class Project {
         this.name = name;
     }
 
-    public User getOwner() {
-        return owner;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public Map<Integer, User> getCollaborators() {
-        return collaborators;
-    }
 }

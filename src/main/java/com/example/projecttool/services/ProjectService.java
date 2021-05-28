@@ -9,16 +9,17 @@ import java.util.ArrayList;
 public class ProjectService {
 
 
-    public static Project nameYourProject(int userId, String projectName, String projectStart, String projectEnd) throws SQLException {
+    public static Project createProject(int userId, String projectName, String startDate, String endDate) throws SQLException {
 
 
         // Creates a project
-        int project_id = ProjectRepository.createProject(userId, projectName, projectStart, projectEnd);
+        Project project = new Project(projectName, startDate, endDate);
+        int project_id = ProjectRepository.createProject(userId, project);
 
         // Saves project in session and adds to view
 
 
-        return new Project(project_id, projectName, projectStart, projectEnd);
+        return new Project(project_id, projectName, startDate, endDate);
     }
 
     public static ArrayList<Project> seeProjectList(int userId) throws SQLException {

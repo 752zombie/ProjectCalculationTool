@@ -9,14 +9,14 @@ import java.util.NoSuchElementException;
 public class ProjectRepository {
 
 
-    public static int createProject(int userId, String project_name, String project_start, String project_end) throws SQLException {
+    public static int createProject(int userId, Project project) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
 
         PreparedStatement statement = connection.prepareStatement("INSERT INTO project (name, owner_id, start_time, end_time) values (?, ?, ?, ?)");
-        statement.setString(1, project_name);
+        statement.setString(1, project.getName());
         statement.setInt(2, userId);
-        statement.setDate(3, java.sql.Date.valueOf(project_start));
-        statement.setDate(4, java.sql.Date.valueOf(project_end));
+        statement.setDate(3, java.sql.Date.valueOf(project.getStartDate()));
+        statement.setDate(4, java.sql.Date.valueOf(project.getEndDate()));
         statement.execute();
 
 

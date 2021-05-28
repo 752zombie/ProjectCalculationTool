@@ -20,9 +20,9 @@
                   <div class="project-list">
                        <div class="project-name" th:text="${project.name}"></div>
                        <label for="project-start"> Start date</label>
-                        <span class="project-start" id="project-start" th:text="${project.startTime}"></span><br>
+                        <span class="project-start" id="project-start" th:text="${project.startDate}"></span><br>
                         <label for="project-end"> Deadline </label>
-                        <span class="project-end" id="project-end" th:text="${project.endTime}"></span><br>
+                        <span class="project-end" id="project-end" th:text="${project.endDate}"></span><br>
                     <form action="/choose-project-to-edit" method="post">
                        <input type="hidden" name="id" th:value="${project.projectId}">
                        <button type="submit" class="btn btn-primary" value="Open" name="action">Edit project</button>
