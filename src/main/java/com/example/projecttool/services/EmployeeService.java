@@ -25,7 +25,7 @@ public class EmployeeService {
         EmployeeRepository.deleteEmployee(employeeId);
     }
 
-    public static void createNewEmployee(String name, int userId) throws SQLException{
+    public static void createEmployee(String name, int userId) throws SQLException{
         EmployeeRepository.createNewEmployee(name, userId);
     }
 

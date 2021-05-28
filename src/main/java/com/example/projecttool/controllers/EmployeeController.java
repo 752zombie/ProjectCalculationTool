@@ -67,7 +67,7 @@ public class EmployeeController {
     public String createNewEmployee(@RequestParam("emp-name") String employeeName, HttpSession session) {
         try {
             User user = (User) session.getAttribute("user");
-            EmployeeService.createNewEmployee(employeeName, user.getId());
+            EmployeeService.createEmployee(employeeName, user.getId());
         }
 
         catch (SQLException e) {

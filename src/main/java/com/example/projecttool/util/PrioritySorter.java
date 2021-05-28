@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class PrioritySorter {
 
-  public static ArrayList<Task> sortTasksByPriority(ArrayList<Task> taskList){
+  public static void sortTasksByPriority(ArrayList<Task> taskList){
 
       // Sorts tasks after priority: High, medium, low
       taskList.sort((task1, task2) -> {
@@ -22,7 +22,6 @@ public class PrioritySorter {
             return -1;
         return 1;
       });
-      return taskList;
   }
 
 }

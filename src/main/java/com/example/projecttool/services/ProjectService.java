@@ -9,17 +9,15 @@ import java.util.ArrayList;
 public class ProjectService {
 
 
-    public static Project createProject(int userId, String projectName, String startDate, String endDate) throws SQLException {
+    public static Project createProject(int userId, String name, String startDate, String endDate) throws SQLException {
 
 
         // Creates a project
-        Project project = new Project(projectName, startDate, endDate);
+        Project project = new Project(name, startDate, endDate);
         int project_id = ProjectRepository.createProject(userId, project);
 
-        // Saves project in session and adds to view
 
-
-        return new Project(project_id, projectName, startDate, endDate);
+        return new Project(project_id, name, startDate, endDate);
     }
 
     public static ArrayList<Project> seeProjectList(int userId) throws SQLException {
@@ -40,7 +38,7 @@ public class ProjectService {
 
     }
 
-    public static void deleteProject(Integer projectId) throws SQLException {
+    public static void deleteProject(int projectId) throws SQLException {
 
             ProjectRepository.deleteProject(projectId);
     }

@@ -24,7 +24,7 @@ public class ShareProjectService {
         return ShareProjectRepository.getSharedProjects(userId);
     }
 
-    public static void ignoreProject(Integer projectId, int userId) throws SQLException {
+    public static void ignoreProject(int projectId, int userId) throws SQLException {
 
         ShareProjectRepository.ignoreProject(projectId, userId);
     }

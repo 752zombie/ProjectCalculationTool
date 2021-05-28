@@ -8,16 +8,16 @@ import java.util.Calendar;
 
 public class DueDateCalculator {
 
-    public String calculateDueDate(int hoursDay, int hoursTotal, String startDate, String countWeekends, int numberOfEmployees) {
+    public String calculateDueDate(int hoursDay, int hoursTotal, String startDate, String countWeekends, int numEmps) {
         //You are not allowed to divide by zero
-        if (hoursDay <= 0 || numberOfEmployees <= 0) {
+        if (hoursDay <= 0 || numEmps <= 0) {
             throw new ArithmeticException();
         }
 
         String finalDate;
 
         // IMPROVED VERSION WITH AMOUNT OF EMPLOYEES //
-        int totalWorkHoursDay = hoursDay * numberOfEmployees;
+        int totalWorkHoursDay = hoursDay * numEmps;
         int daysToFinish = hoursTotal / totalWorkHoursDay;
 
 
