@@ -34,7 +34,7 @@ public class ProjectService {
 
     public static boolean isReadOnly(int projectId, int userId) throws SQLException {
         String accessLevel = ShareProjectRepository.getAccessLevel(projectId, userId);
-        return accessLevel.equals("read-only");
+        return accessLevel.equals("r");
 
     }
 
@@ -51,7 +51,7 @@ public class ProjectService {
 
     public static boolean hasAccess(int projectId, int userId) throws SQLException{
         String accessLevel = ShareProjectRepository.getAccessLevel(projectId, userId);
-        boolean isCollaborator = accessLevel.equals("read-and-edit") || accessLevel.equals("read-only");
+        boolean isCollaborator = accessLevel.equals("rw") || accessLevel.equals("r");
         boolean isOwner = isOwner(projectId, userId);
         return isOwner || isCollaborator;
     }

@@ -32,7 +32,7 @@ public class ShareProjectController {
             // Checks if user is about to make himself read-only
             boolean shareSecurity = ShareProjectService.shareProject(user.getEmail(), receiverMail, editOrRead, project.getProjectId());
 
-            if (shareSecurity){
+            if (!shareSecurity){
                 return "share-project/danger-read-only";
             }
 

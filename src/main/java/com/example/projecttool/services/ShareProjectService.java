@@ -11,11 +11,11 @@ public class ShareProjectService {
     public static boolean shareProject(String userEmail, String receiverMail, String editOrRead, int projectId) throws SQLException {
 
 
-        if (userEmail.equals(receiverMail) && editOrRead.equals("read-only")){
-            return true;
+        if (userEmail.equals(receiverMail) && editOrRead.equals("r")){
+            return false;
         }
             ShareProjectRepository.shareProject(receiverMail, editOrRead, projectId);
-        return false;
+        return true;
 
     }
 
