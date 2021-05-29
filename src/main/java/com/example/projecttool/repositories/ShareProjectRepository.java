@@ -29,25 +29,13 @@ public class ShareProjectRepository {
 
         int receiverId = getReceiverId(receiverMail);
 
-        editOrReadAccess(editOrRead, receiverId, projectId);
 
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO collaborators (project_id, collaborator_id) VALUES (?, ?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO collaborators (project_id, collaborator_id, access_level) VALUES (?, ?, ?)");
         statement.setInt(1, projectId);
         statement.setInt(2, receiverId);
+        statement.setString(3, editOrRead);
 
         statement.execute();
-    }
-
-    private static void editOrReadAccess(String editOrRead, int receiverId, int projectId) throws SQLException {
-
-        Connection connection = DatabaseConnection.getConnection();
-
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO edit_read (access_level, collaborator_id, project_id) VALUES (?, ?, ?)");
-        statement.setString(1, editOrRead);
-        statement.setInt(2, receiverId);
-        statement.setInt(3, projectId);
-        statement.execute();
-
     }
 
 
@@ -58,7 +46,7 @@ public class ShareProjectRepository {
         int receiverId = 0;
 
 
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
+        PreparedStatement statement = connection.prepareStatement("SELECT user_id FROM users WHERE email = ?");
         statement.setString(1, receiverMail);
         ResultSet resultSet = statement.executeQuery();
 
@@ -70,15 +58,13 @@ public class ShareProjectRepository {
 
     }
 
-    //flawed logic. What if the project was shared with multiple users with different access right. In that case the order
-    //that elements of the ResultSet came back would determine whether or not a user could edit a shared project
-    //TODO: improve (see above)
+
     public static String getAccessLevel(int projectId, int userId) throws SQLException {
 
         Connection connection = DatabaseConnection.getConnection();
         String accessLevel = "no-access";
 
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM edit_read WHERE project_id = ? AND collaborator_id = ?");
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM collaborators WHERE project_id = ? AND collaborator_id = ?");
         statement.setInt(1, projectId);
         statement.setInt(2, userId);
         ResultSet resultSet = statement.executeQuery();
