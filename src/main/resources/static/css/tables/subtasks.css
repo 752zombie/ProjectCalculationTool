@@ -7,16 +7,9 @@
 
 }
 
+
+
 .flex-box-1 {
-
-    font-size: x-small;
-
-
-}
-
-
-
-.flex-box-2 {
     display: flex;
     padding: 10px;
     flex-wrap: wrap;
@@ -24,6 +17,15 @@
     justify-content: space-around;
 
 }
+
+.flex-box-2 {
+    margin-right: 150px;
+    font-size: x-small;
+    margin-left: -150px;
+
+
+}
+
 
 
 .create-new-subtask{
