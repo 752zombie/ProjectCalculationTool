@@ -3,19 +3,22 @@ package com.example.projecttool.models.project;
 import java.util.List;
 
 public class Employee {
-    int id;
-    String name;
-    List<Skill> skills;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private List<Skill> skills;
 
-    public Employee(int id, String name, List<Skill> skills) {
+    public Employee(int id, String firstName, String lastName, List<Skill> skills) {
+        this.firstName = firstName;
         this.id = id;
-        this.name = name;
+        this.lastName = lastName;
         this.skills = skills;
 
     }
 
-    public Employee(String name, List<Skill> skills) {
-        this.name = name;
+    public Employee(String firstName, String lastName, List<Skill> skills) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.skills = skills;
     }
 
@@ -23,15 +26,22 @@ public class Employee {
         return id;
     }
 
-    public String getName() {
-        return name;
+    // Do not delete. Is in use by thymeleaf
+    public String getLastName() {
+        return lastName == null ? "" : " " + lastName;
     }
 
+    // Do not delete. Is in use by thymeleaf
+    public String getFirstName() {
+        return firstName;
+    }
+
+    // Do not delete. Is in use by thymeleaf
     public List<Skill> getSkills() {
         return skills;
     }
 
-
+    // Do not delete. Is in use by thymeleaf
     public boolean hasSkill(int skillId) {
         for (Skill skill : skills) {
             if (skill.getId() == skillId) {

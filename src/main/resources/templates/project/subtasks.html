@@ -31,7 +31,7 @@
             <div id="current-employees" th:each="emp, iter : ${session.allEmployees}">
                 <div th:id="${emp.id + 'info'}">
                     <div>
-                        <span th:text="${emp.name}" class="emp-name-hover"></span><br>
+                        <span th:text="${emp.firstName + emp.lastName}" class="emp-name-hover"></span><br>
                         <span th:if="${!emp.skills.isEmpty()}">Skills: </span>
                         <span th:each="skill, iter : ${emp.skills}" class="skills-hover">
                             <span th:id="skill.id" th:if="${!iter.last}" th:text="${skill.name} + ', '"></span>
@@ -163,7 +163,7 @@
                         <input name="subtask-id" th:value="${subtask.id}" type="hidden">
                         <label for="employee-adder">Add employee</label>
                         <select id="employee-adder" name="employee-id">
-                            <option th:each="emp : ${session.allEmployees}" th:if="${!subtask.isAssigned(emp.id)}" th:text="${emp.name}"
+                            <option th:each="emp : ${session.allEmployees}" th:if="${!subtask.isAssigned(emp.id)}" th:text="${emp.firstName + emp.lastName}"
                                     th:value="${emp.id}"></option>
                         </select>
                         <button class="btn btn-primary" id="add-employee-btn" type="submit">Add</button>
@@ -174,7 +174,7 @@
                         <input name="subtask-id" th:value="${subtask.id}" type="hidden">
                         <label for="employee-remover">Remove employee</label>
                         <select id="employee-remover" name="employee-id">
-                            <option th:each="emp : ${subtask.assignedEmployees}" th:text="${emp.name}"
+                            <option th:each="emp : ${subtask.assignedEmployees}" th:text="${emp.firstName + emp.lastName}"
                                     th:value="${emp.id}"></option>
                         </select>
                         <button class="btn btn-warning" id="remove-employee-btn" type="submit">Remove</button>
@@ -213,7 +213,7 @@
                     <span id="assigned-employee-span">Assigned employees: </span>
                     <span th:each="emp, iter : ${subtask.getAssignedEmployees()}" th:class="${subtask.id}">
                         <span th:id="${emp.id}" onmouseover="showDetails(this.id, this.parentElement.className)" onmouseout="hideDetails(this.parentElement.className)">
-                            <span id="show-employee-details" th:text="${emp.name}" class="employee-name-subtasks"></span>
+                            <span id="show-employee-details" th:text="${emp.firstName + emp.lastName}" class="employee-name-subtasks"></span>
                             <span th:if="${!iter.last}" th:text="${', '}"></span>
                         </span>
 

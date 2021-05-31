@@ -83,7 +83,7 @@
                         <form action="/change-employee-name" method="post">
                             <input class="emp-name" type="hidden" name="emp-id" th:value="${emp.id}">
                             <label for="emp-name">Employee name: </label><input type="text" name="emp-name"
-                                                                                th:value="${emp.name}" id="emp-name"
+                                                                                th:value="${emp.firstName + emp.lastName}" id="emp-name"
                                                                                 onchange="this.form.submit()">
                         </form>
 

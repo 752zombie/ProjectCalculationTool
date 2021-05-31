@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 public class DueDateCalculator {
 
-    public String calculateDueDate(int hoursDay, int hoursTotal, String startDate, String countWeekends, int numEmps) {
+    public String calculateDueDate(int hoursDay, int hoursTotal, String startDate, boolean countWeekends, int numEmps) {
         //You are not allowed to divide by zero
         if (hoursDay <= 0 || numEmps <= 0) {
             throw new ArithmeticException();
@@ -21,7 +21,7 @@ public class DueDateCalculator {
         int daysToFinish = hoursTotal / totalWorkHoursDay;
 
 
-    if (countWeekends.equals("weekend-true")) {
+    if (countWeekends) {
 
         String dueDate = dateAdderWithWeekends(daysToFinish, startDate);
 

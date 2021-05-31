@@ -47,8 +47,8 @@ public class TaskController {
     @PostMapping("/edit-task")
     public String editTask(@RequestParam("id") int taskId, @RequestParam("name") String name, @RequestParam("description") String description,
                            @RequestParam("priority") String priority, @RequestParam("start_time") String startDate,
-                           @RequestParam("end_time") String endDate, @RequestParam("estimated-hours-day") int estimatedHoursDay,
-                           @RequestParam("action") String action, @RequestParam("count-weekends") String countWeekends, HttpSession session) {
+                           @RequestParam("end_time") String endDate, @RequestParam("estimated-hours-day") byte estimatedHoursDay,
+                           @RequestParam("action") String action, @RequestParam("count-weekends") boolean countWeekends, HttpSession session) {
 
         try {
             // Needs current project to get Tasks
@@ -80,7 +80,7 @@ public class TaskController {
     @PostMapping("add-row-to-tasks")
     public String addRowToTask(@RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("priority") String priority,
                                @RequestParam("start_time") String start_time, @RequestParam("end_time") String end_time,
-                               @RequestParam("count-weekends") String countWeekends, @RequestParam("estimated-hours-day") int estimatedHoursDay,
+                               @RequestParam("count-weekends") boolean countWeekends, @RequestParam("estimated-hours-day") byte estimatedHoursDay,
                                HttpSession session) {
 
         try {
@@ -101,6 +101,7 @@ public class TaskController {
 
             return "redirect:/task-list";
         } catch (SQLException e) {
+            e.printStackTrace();
             return ErrorHandlerController.setCurrentError("Something went wrong editing project", session);
         }
 

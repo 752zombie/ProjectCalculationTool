@@ -9,12 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeRepository {
-    public static void changeEmployeeName(int employeeId, String name) throws SQLException {
+    public static void changeEmployeeName(int employeeId, String firstName, String lastName) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
 
-        PreparedStatement statement = connection.prepareStatement("UPDATE employees SET emp_name = ? WHERE emp_id = ?");
-        statement.setString(1, name);
-        statement.setInt(2, employeeId);
+        PreparedStatement statement = connection.prepareStatement("UPDATE employees SET first_name = ?, last_name = ? WHERE emp_id = ?");
+        statement.setString(1, firstName);
+        statement.setString(2, lastName);
+        statement.setInt(3, employeeId);
         statement.execute();
     }
 
@@ -26,12 +27,13 @@ public class EmployeeRepository {
         statement.execute();
     }
 
-    public static void createNewEmployee(String employeeName, int userId) throws SQLException{
+    public static void createNewEmployee(String firstName, String lastName, int userId) throws SQLException{
         Connection connection = DatabaseConnection.getConnection();
 
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO employees(emp_name, user_id) VALUES (?, ?)");
-        statement.setString(1, employeeName);
-        statement.setInt(2, userId);
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO employees(first_name, last_name, user_id) VALUES (?, ?, ?)");
+        statement.setString(1, firstName);
+        statement.setString(2, lastName);
+        statement.setInt(3, userId);
         statement.execute();
     }
 
