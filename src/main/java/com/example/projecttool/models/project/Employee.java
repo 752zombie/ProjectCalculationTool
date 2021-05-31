@@ -26,19 +26,22 @@ public class Employee {
         return id;
     }
 
+    // Do not delete. Is in use by thymeleaf
     public String getLastName() {
         return lastName == null ? "" : " " + lastName;
     }
 
+    // Do not delete. Is in use by thymeleaf
     public String getFirstName() {
         return firstName;
     }
 
+    // Do not delete. Is in use by thymeleaf
     public List<Skill> getSkills() {
         return skills;
     }
 
-
+    // Do not delete. Is in use by thymeleaf
     public boolean hasSkill(int skillId) {
         for (Skill skill : skills) {
             if (skill.getId() == skillId) {
