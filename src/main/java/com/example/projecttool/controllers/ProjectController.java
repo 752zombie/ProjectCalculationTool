@@ -39,8 +39,9 @@ public class ProjectController {
 
         }
 
-        catch (SQLException e) { ;
-            return ErrorHandlerController.setCurrentError("Something went wrong editing project", session);
+        catch (SQLException e) {
+            e.printStackTrace();
+            return ErrorHandlerController.setCurrentError("Something went wrong creating project", session);
         }
 
         return "redirect:task-list";

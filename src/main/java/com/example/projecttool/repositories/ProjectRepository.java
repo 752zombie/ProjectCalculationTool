@@ -12,7 +12,7 @@ public class ProjectRepository {
     public static int createProject(int userId, Project project) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
 
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO project (name, owner_id, start_time, end_time) values (?, ?, ?, ?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO projects (project_name, owner_id, start_time, end_time) values (?, ?, ?, ?)");
         statement.setString(1, project.getName());
         statement.setInt(2, userId);
         statement.setDate(3, java.sql.Date.valueOf(project.getStartDate()));
@@ -27,7 +27,7 @@ public class ProjectRepository {
         Connection connection = DatabaseConnection.getConnection();
         int project_id = 0;
 
-        PreparedStatement statement = connection.prepareStatement("SELECT MAX(project_id) FROM project WHERE owner_id = ?");
+        PreparedStatement statement = connection.prepareStatement("SELECT MAX(project_id) FROM projects WHERE owner_id = ?");
         statement.setInt(1, userId);
         ResultSet resultSet = statement.executeQuery();
 
@@ -45,7 +45,7 @@ public class ProjectRepository {
 
         Connection connection = DatabaseConnection.getConnection();
 
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM project WHERE owner_id = ?");
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM projects WHERE owner_id = ?");
         statement.setInt(1, userId);
 
         return getProjects(statement);
@@ -55,13 +55,13 @@ public class ProjectRepository {
     public static Project getProject(int projectId) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
 
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM project WHERE project_id = ?");
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM projects WHERE project_id = ?");
         statement.setInt(1, projectId);
         ResultSet resultSet = statement.executeQuery();
 
         if (resultSet.next()) {
             int id = resultSet.getInt("project_id");
-            String name = resultSet.getString("name");
+            String name = resultSet.getString("project_name");
             String start_time = resultSet.getString("start_time");
             String end_time = resultSet.getString("end_time");
 
@@ -88,7 +88,7 @@ public class ProjectRepository {
 
 
         // DELETES from project
-        statement = connection.prepareStatement("DELETE FROM project WHERE project_id = ?");
+        statement = connection.prepareStatement("DELETE FROM projects WHERE project_id = ?");
         statement.setInt(1, projectId);
         statement.execute();
     }
@@ -98,7 +98,7 @@ public class ProjectRepository {
 
         int ownerId = 0;
 
-        PreparedStatement statement = connection.prepareStatement("SELECT owner_id FROM project WHERE project_id = ?");
+        PreparedStatement statement = connection.prepareStatement("SELECT owner_id FROM projects WHERE project_id = ?");
         statement.setInt(1, projectId);
         ResultSet resultSet = statement.executeQuery();
 
@@ -116,7 +116,7 @@ public class ProjectRepository {
 
         while (resultSet.next()) {
             int project_id = resultSet.getInt("project_id");
-            String project_name = resultSet.getString("name");
+            String project_name = resultSet.getString("project_name");
             String start_time = resultSet.getString("start_time");
             String end_time = resultSet.getString("end_time");
 

@@ -14,18 +14,18 @@ public class Task {
     private String name;
     private String description;
     private String priority;
-    private int estimatedHoursPrDay;
+    private byte estimatedHoursPrDay;
     private int estimatedHoursTotal;
     private String start_time;
     private String end_time_calculated;
     private String end_time;
-    private String countWeekends;
+    private boolean countWeekends;
     private boolean endTimeCanBeCalculated = false;
 
 
 
 
-    public Task(int id, String name, String description, String start_time, String end_time, String priority, int estimatedHoursPrDay, String countWeekends) {
+    public Task(int id, String name, String description, String start_time, String end_time, String priority, byte estimatedHoursPrDay, boolean countWeekends) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -37,7 +37,7 @@ public class Task {
 
     }
 
-    public Task( String name, String description, String start_time, String end_time, String priority, int estimatedHoursPrDay, String countWeekends) {
+    public Task( String name, String description, String start_time, String end_time, String priority, byte estimatedHoursPrDay, boolean countWeekends) {
         this.name = name;
         this.description = description;
         this.start_time = start_time;
@@ -48,11 +48,11 @@ public class Task {
 
     }
 
-    public String getCountWeekends() {
+    public boolean getCountWeekends() {
         return countWeekends;
     }
 
-    public int getEstimatedHoursPrDay() {
+    public byte getEstimatedHoursPrDay() {
         return estimatedHoursPrDay;
     }
 
@@ -118,7 +118,7 @@ public class Task {
         this.priority = priority;
     }
 
-    public void setEstimatedHoursPrDay(int estimatedHoursPrDay) {
+    public void setEstimatedHoursPrDay(byte estimatedHoursPrDay) {
         this.estimatedHoursPrDay = estimatedHoursPrDay;
     }
 
@@ -138,7 +138,7 @@ public class Task {
         this.end_time = end_time;
     }
 
-    public void setCountWeekends(String countWeekends) {
+    public void setCountWeekends(boolean countWeekends) {
         this.countWeekends = countWeekends;
     }
 

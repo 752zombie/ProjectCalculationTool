@@ -26,8 +26,8 @@ public class TaskRepository {
             String start_time = resultSet.getString("start_time");
             String end_time = resultSet.getString("end_time");
             int estimatedHours = TaskRepository.getTotalHoursToComplete(id);
-            int estimatedHoursPrDay = resultSet.getInt("estimated_hours_day");
-            String countWeekends = resultSet.getString("count_weekends");
+            byte estimatedHoursPrDay = resultSet.getByte("estimated_hours_day");
+            boolean countWeekends = resultSet.getBoolean("count_weekends");
 
             Task task = new Task(id, project_name, project_description, start_time, end_time, priority, estimatedHoursPrDay, countWeekends);
             task.setEstimatedHoursTotal(estimatedHours);
@@ -50,8 +50,8 @@ public class TaskRepository {
         statement.setDate(3, java.sql.Date.valueOf(task.getStart_time()));
         statement.setDate(4, java.sql.Date.valueOf(task.getEnd_time()));
         statement.setString(5, task.getPriority());
-        statement.setInt(6, task.getEstimatedHoursPrDay());
-        statement.setString(7, task.getCountWeekends());
+        statement.setByte(6, task.getEstimatedHoursPrDay());
+        statement.setBoolean(7, task.getCountWeekends());
         statement.setInt(8, task.getId());
 
         statement.execute();
@@ -75,8 +75,8 @@ public class TaskRepository {
         statement.setDate(4, java.sql.Date.valueOf(task.getStart_time()));
         statement.setDate(5, java.sql.Date.valueOf(task.getEnd_time()));
         statement.setString(6, task.getPriority());
-        statement.setInt(7, task.getEstimatedHoursPrDay());
-        statement.setString(8, task.getCountWeekends());
+        statement.setByte(7, task.getEstimatedHoursPrDay());
+        statement.setBoolean(8, task.getCountWeekends());
 
         statement.execute();
 
