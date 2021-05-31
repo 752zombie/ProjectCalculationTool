@@ -137,6 +137,11 @@ body {
     width: 100%;
 }
 
+.content-area1-1 #heading{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
 /*______Footer_______*/
 .footer {
     position: fixed;
@@ -181,14 +186,17 @@ ul#menubar{;
 
 
 .nav-bar li {
-     float: right;
-     display: inline-block;
-     text-align: center;
-     text-decoration: none;
-     padding: 16px 12px;
-     margin-top: 55px;
+    float: right;
+    display: inline-block;
+    text-align: center;
+    padding: 16px 12px;
+    margin-top: 55px;
+}
+
+.nav-bar li a{
     color: #525252;
- }
+    text-decoration: none;
+}
 
 
 
