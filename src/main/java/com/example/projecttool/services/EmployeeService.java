@@ -18,7 +18,14 @@ public class EmployeeService {
     }
 
     public static void changeEmployeeName(int employeeId, String name) throws SQLException{
-        EmployeeRepository.changeEmployeeName(employeeId, name);
+        String[] firstNameLastName = parseFullName(name);
+        if (firstNameLastName.length < 2) {
+            EmployeeRepository.changeEmployeeName(employeeId, firstNameLastName[0], null);
+        }
+
+        else {
+            EmployeeRepository.changeEmployeeName(employeeId, firstNameLastName[0], firstNameLastName[firstNameLastName.length - 1]);
+        }
     }
 
     public static void deleteEmployee(int employeeId) throws SQLException{
@@ -26,7 +33,14 @@ public class EmployeeService {
     }
 
     public static void createEmployee(String name, int userId) throws SQLException{
-        EmployeeRepository.createNewEmployee(name, userId);
+        String[] firstNameLastName = parseFullName(name);
+        if (firstNameLastName.length < 2) {
+            EmployeeRepository.createNewEmployee(firstNameLastName[0], null, userId);
+        }
+
+        else {
+            EmployeeRepository.createNewEmployee(firstNameLastName[0], firstNameLastName[firstNameLastName.length - 1], userId);
+        }
     }
 
     public static void createNewSkill(int userId, String skillName) throws SQLException{
@@ -43,5 +57,9 @@ public class EmployeeService {
 
     public static void removeSkillFromEmployee(int employeeId, int skillId) throws SQLException{
         EmployeeRepository.removeSkillFromEmployee(employeeId, skillId);
+    }
+
+    private static String[] parseFullName(String fullName) {
+        return fullName.split("\\s");
     }
 }
