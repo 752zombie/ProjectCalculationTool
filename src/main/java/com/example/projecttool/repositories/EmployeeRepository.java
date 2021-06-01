@@ -114,27 +114,21 @@ public class EmployeeRepository {
         return employees;
     }
 
-    public static ArrayList<Skill> getEmployeeSkills(int employeeID) {
+    public static ArrayList<Skill> getEmployeeSkills(int employeeID) throws SQLException{
         Connection connection = DatabaseConnection.getConnection();
         ArrayList<Skill> skills = new ArrayList<>();
 
-        try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM emp_skill " +
-                    "INNER JOIN skills " +
-                    "ON emp_skill.skill_id = skills.skill_id " +
-                    "WHERE emp_id = ?");
-            statement.setInt(1, employeeID);
-            ResultSet resultSet = statement.executeQuery();
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM emp_skill " +
+                "INNER JOIN skills " +
+                "ON emp_skill.skill_id = skills.skill_id " +
+                "WHERE emp_id = ?");
+        statement.setInt(1, employeeID);
+        ResultSet resultSet = statement.executeQuery();
 
-            while(resultSet.next()) {
-                int skillId = resultSet.getInt("skill_id");
-                String skillName = resultSet.getString("skill_name");
-                skills.add(new Skill(skillName, skillId));
-            }
-        }
-
-        catch (SQLException e) {
-            e.printStackTrace();
+        while(resultSet.next()) {
+            int skillId = resultSet.getInt("skill_id");
+            String skillName = resultSet.getString("skill_name");
+            skills.add(new Skill(skillName, skillId));
         }
 
         return skills;

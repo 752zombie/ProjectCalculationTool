@@ -52,9 +52,8 @@ public class DatabaseConnection {
         }
 
 
-        catch (SQLException e) {
-            System.out.println(e);
-            System.out.println("Error: connection to database could not be established");
+        catch (SQLException ignored) {
+
         }
 
         return connection;

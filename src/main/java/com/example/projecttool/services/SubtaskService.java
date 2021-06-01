@@ -12,7 +12,7 @@ import java.util.ArrayList;
 // Magnus
 
 public class SubtaskService {
-    public static ArrayList<Subtask> getSubtasks(int taskId) {
+    public static ArrayList<Subtask> getSubtasks(int taskId) throws SQLException{
         return SubtaskRepository.getRelatedSubtasks(taskId);
     }
 
