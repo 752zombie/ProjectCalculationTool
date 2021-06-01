@@ -9,4 +9,5 @@ public class GeneralController {
     public String homePage() {
         return "index";
     }
+
 }
