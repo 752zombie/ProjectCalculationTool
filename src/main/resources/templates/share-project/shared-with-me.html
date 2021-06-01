@@ -9,30 +9,29 @@
 
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
+  <div th:replace="fragments/header :: header"></div>
 
-<div class="content-area">
-  <div class="content-area1-1">
-<h1>Shared projects</h1>
+    <div class="content-area">
+       <div class="content-area1-1">
+          <div>Shared projects</div>
 
-<ul th:each="project : ${projectList}">
-  <li>
-    <div class="project-list">
-      <h1 class="project-name" th:text="${project.name}"></h1>
-      <label for="project-start"> Start date</label>
-      <span class="project-start" id="project-start" th:text="${project.startDate}"></span><br>
-      <label for="project-end"> Deadline </label>
-      <span class="project-end" id="project-end" th:text="${project.endDate}"></span><br>
-      <form action="/choose-project-to-edit" method="post">
-        <input type="hidden" name="id" th:value="${project.projectId}">
-        <button type="submit" class="btn btn-primary" value="Open" name="action">Edit project</button>
-        <button type="submit" class="btn btn-warning" value="Ignore" name="action">Ignore project</button>
-      </form>
+          <ul th:each="project : ${projectList}">
+            <li>
+               <div class="project-list">
+                  <div class="project-name" th:text="${project.name}"></div>
+                  <label for="project-start"> Start date</label>
+                  <span class="project-start" id="project-start" th:text="${project.startDate}"></span><br>
+                  <label for="project-end"> Deadline </label>
+                  <span class="project-end" id="project-end" th:text="${project.endDate}"></span><br>
+                  <form action="/choose-project-to-edit" method="post">
+                     <input type="hidden" name="id" th:value="${project.projectId}">
+                     <button type="submit" class="btn btn-primary" value="Open" name="action">Edit project</button>
+                     <button type="submit" class="btn btn-warning" value="Ignore" name="action">Ignore project</button>
+                  </form>
+               </div>
+            </li>
+          </ul>
+       </div>
     </div>
-  </li>
-</ul>
-  </div>
-</div>
-
-</body>
+  </body>
 </html>

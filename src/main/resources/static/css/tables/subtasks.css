@@ -21,12 +21,9 @@
 .flex-box-2 {
     margin-right: 150px;
     font-size: x-small;
-    margin-left: -150px;
 
 
 }
-
-
 
 .create-new-subtask{
     margin-top: 70px;
@@ -44,8 +41,6 @@
 
     margin-bottom: 150px;
 }
-
-
 
 #create-new-subtask {
     margin-top: 50px;
@@ -81,7 +76,18 @@
     text-align: center;
 }
 
-.mover {
+.mover #help{
     padding: 15px;
+    color: #525252;
+    text-decoration: none;
+
 }
+
+.mover#edit-emp{
+    padding: 15px;
+    color: #525252;
+    text-decoration: none;
+}
+
+
 

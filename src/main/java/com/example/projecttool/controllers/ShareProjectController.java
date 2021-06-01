@@ -37,9 +37,10 @@ public class ShareProjectController {
             }
 
         } catch (SQLException s) {
+            s.printStackTrace();
             return ErrorHandlerController.setCurrentError("Something went wrong adding collaborator", session);
         }
-        return "share-project/share-complete";
+        return "share-project/share-completed";
     }
 
     @GetMapping("shared-with-me")

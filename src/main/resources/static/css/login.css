@@ -115,16 +115,6 @@ body {
 
 /*_____Share with page________*/
 
-/*share-with button */
-.share{
-    border-color: #8a8a8a;
-    padding: 8px 12px 8px 12px ;
-    color: #525252;
-    border-radius: 6px;
-    margin-top: 15px;
-    margin-left:15px ;
-    font-size: 15px;
-}
 
 .share-with{
     text-align: center;
@@ -140,4 +130,17 @@ body {
 
 .clikbtn{
   margin-left: 15px ;
+}
+
+#btn-successs{
+    background-color: #c7c7c7;
+    color: white;
+    border-color: #525252;
+    border-radius: 4px;
+    padding:8px 10px 8px 10px ;
+    cursor: pointer;
+}
+
+#btn-successs:hover{
+    color: #2159e8;
 }
