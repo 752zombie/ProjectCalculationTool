@@ -164,7 +164,7 @@
 
                         <!-- Buttons -->
                         <span class="td">
-                            <input th:if="${!session.isReadOnly}" type="submit" class="btn btn-success" id="btn-success" value="Save" name="action" formaction="/edit-task">
+                            <input th:if="${!session.isReadOnly}" type="submit" class="btn btn-success" id="btn-success" value="Save" name="action" formaction="edit-task">
                             <input th:if="${!session.isReadOnly}" type="submit" class="btn btn-danger" id="btn-danger" value="Delete" name="action"
                                 formaction="edit-task">
                             <input type="submit" class="btn btn-primary" id="btn-primary" value="View subtasks" name="action"
