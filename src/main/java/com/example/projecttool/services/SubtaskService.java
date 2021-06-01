@@ -41,16 +41,6 @@ public class SubtaskService {
 
     }
 
-    public static ArrayList<Employee> getAllEmployees(int userId, int projectId) throws SQLException {
-        ArrayList<Employee> employees = new ArrayList<>();
-        int ownerId = ProjectRepository.getOwnerId(projectId);
-        if (ProjectService.hasAccess(projectId, userId)) {
-            employees = SubtaskRepository.getAllEmployees(ownerId);
-        }
-
-        return employees;
-    }
-
     public static void addEmployeeToSubtask(int subtaskId, int employeeId, int projectId, int userId) throws SQLException{
         if (ProjectService.canEdit(projectId, userId)) {
             SubtaskRepository.addEmployeeToSubtask(subtaskId, employeeId);

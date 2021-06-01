@@ -3,6 +3,7 @@ package com.example.projecttool.services;
 import com.example.projecttool.models.project.Employee;
 import com.example.projecttool.models.project.Skill;
 import com.example.projecttool.repositories.EmployeeRepository;
+import com.example.projecttool.repositories.ProjectRepository;
 import com.example.projecttool.repositories.SubtaskRepository;
 
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 public class EmployeeService {
     public static ArrayList<Employee> getAllEmployees(int userId) throws SQLException {
-        return SubtaskRepository.getAllEmployees(userId);
+        return EmployeeRepository.getAllEmployees(userId);
     }
 
     public static ArrayList<Skill> getAllSkills(int userId) throws SQLException{
@@ -61,5 +62,15 @@ public class EmployeeService {
 
     private static String[] parseFullName(String fullName) {
         return fullName.split("\\s");
+    }
+
+    public static ArrayList<Employee> getAllEmployees(int userId, int projectId) throws SQLException {
+        ArrayList<Employee> employees = new ArrayList<>();
+        int ownerId = ProjectRepository.getOwnerId(projectId);
+        if (ProjectService.hasAccess(projectId, userId)) {
+            employees = EmployeeRepository.getAllEmployees(ownerId);
+        }
+
+        return employees;
     }
 }

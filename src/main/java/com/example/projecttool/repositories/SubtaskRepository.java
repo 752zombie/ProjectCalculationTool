@@ -67,7 +67,7 @@ public class SubtaskRepository {
                 int employeeId = resultSet.getInt("emp_id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
-                ArrayList<Skill> skills = getEmployeeSkills(employeeId);
+                ArrayList<Skill> skills = EmployeeRepository.getEmployeeSkills(employeeId);
 
                 employees.add(new Employee(employeeId, firstName, lastName, skills));
 
@@ -82,31 +82,7 @@ public class SubtaskRepository {
         return employees;
     }
 
-    private static ArrayList<Skill> getEmployeeSkills(int employeeID) {
-        Connection connection = DatabaseConnection.getConnection();
-        ArrayList<Skill> skills = new ArrayList<>();
 
-        try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM emp_skill " +
-                    "INNER JOIN skills " +
-                    "ON emp_skill.skill_id = skills.skill_id " +
-                    "WHERE emp_id = ?");
-            statement.setInt(1, employeeID);
-            ResultSet resultSet = statement.executeQuery();
-
-            while(resultSet.next()) {
-                int skillId = resultSet.getInt("skill_id");
-                String skillName = resultSet.getString("skill_name");
-                skills.add(new Skill(skillName, skillId));
-            }
-        }
-
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return skills;
-    }
 
     public static ArrayList<Skill> getRequiredSkills(int subtaskId) {
         Connection connection = DatabaseConnection.getConnection();
@@ -170,25 +146,6 @@ public class SubtaskRepository {
         statement.setInt(5, subtask.getHoursToComplete());
         statement.setInt(6, subtask.getId());
         statement.execute();
-    }
-
-    public static ArrayList<Employee> getAllEmployees(int userId) throws SQLException{
-        Connection connection = DatabaseConnection.getConnection();
-        ArrayList<Employee> employees = new ArrayList<>();
-
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM employees WHERE user_id = ?");
-        statement.setInt(1, userId);
-        ResultSet resultSet = statement.executeQuery();
-
-        while (resultSet.next()) {
-            int empId = resultSet.getInt("emp_id");
-            String firstName = resultSet.getString("first_name");
-            String lastName = resultSet.getString("last_name");
-            ArrayList<Skill> skills = getEmployeeSkills(empId);
-            employees.add(new Employee(empId, firstName, lastName, skills));
-        }
-
-        return employees;
     }
 
     public static ArrayList<Subtask> getRelatedSubtasks(int taskId) {

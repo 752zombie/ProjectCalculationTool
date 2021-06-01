@@ -37,7 +37,7 @@ public class SubtaskController {
         try {
             User user = (User) session.getAttribute("user");
             Project project = (Project) session.getAttribute("project");
-            ArrayList<Employee> employees = SubtaskService.getAllEmployees(user.getId(), project.getProjectId());
+            ArrayList<Employee> employees = EmployeeService.getAllEmployees(user.getId(), project.getProjectId());
             session.setAttribute("allEmployees", employees);
             Integer taskId = (Integer) session.getAttribute("taskId");
             String taskName = TaskService.getTaskName(taskId);
