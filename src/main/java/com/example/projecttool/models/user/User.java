@@ -48,11 +48,5 @@ public class User {
     }
 
 
-    @Override
-    public String toString() {
-        return  "name='" + name + '\'' +
-                ", eMail='" + eMail + '\'' +
-                ", password='" + password;
-    }
 
 }
