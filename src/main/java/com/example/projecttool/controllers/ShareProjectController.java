@@ -40,7 +40,7 @@ public class ShareProjectController {
             s.printStackTrace();
             return ErrorHandlerController.setCurrentError("Something went wrong adding collaborator", session);
         }
-        return "share-project/share-completed";
+        return "share-project/share-complete";
     }
 
     @GetMapping("shared-with-me")
@@ -54,7 +54,8 @@ public class ShareProjectController {
             model.addAttribute("projectList", sharedProjects);
 
 
-        } catch (SQLException s) {
+        } catch (SQLException e) {
+            e.printStackTrace();
             return ErrorHandlerController.setCurrentError("Could not get shared projects", session);
         }
         return "share-project/shared-with-me";

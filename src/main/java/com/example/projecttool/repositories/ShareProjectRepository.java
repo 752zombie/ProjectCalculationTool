@@ -14,9 +14,9 @@ public class ShareProjectRepository {
         Connection connection = DatabaseConnection.getConnection();
 
         PreparedStatement statement = connection.prepareStatement("SELECT * \n" +
-                "FROM project\n" +
+                "FROM projects\n" +
                 "INNER JOIN collaborators\n" +
-                "ON  project.project_id = collaborators.project_id\n" +
+                "ON  projects.project_id = collaborators.project_id\n" +
                 "WHERE collaborator_id = ?");
         statement.setInt(1, userId);
         return ProjectRepository.getProjects(statement);

@@ -40,7 +40,7 @@ public class TaskService {
 
     public static void editTask(int taskId, String taskName, String description, String priority, String start_time, String end_time,
                          byte estimatedHoursDay, boolean countWeekends, int projectId, int userId) throws SQLException {
-        boolean canEdit = ShareProjectRepository.getAccessLevel(projectId, userId).equals("read-and-edit");
+        boolean canEdit = ShareProjectRepository.getAccessLevel(projectId, userId).equals("rw");
         boolean isOwner = ProjectService.isOwner(projectId, userId);
         if (isOwner || canEdit) {
             TaskRepository.editTask(new Task(taskId, taskName, description, start_time, end_time, priority, estimatedHoursDay, countWeekends));
@@ -55,7 +55,7 @@ public class TaskService {
     public static void createTask(int projectId, String name, String description, String priority, String start_time, String end_time,
                                   byte estimatedHoursDay, boolean countWeekends, int userId) throws SQLException {
 
-        boolean canEdit = ShareProjectRepository.getAccessLevel(projectId, userId).equals("read-and-edit");
+        boolean canEdit = ShareProjectRepository.getAccessLevel(projectId, userId).equals("rw");
         boolean isOwner = ProjectService.isOwner(projectId, userId);
 
         if (isOwner || canEdit) {
