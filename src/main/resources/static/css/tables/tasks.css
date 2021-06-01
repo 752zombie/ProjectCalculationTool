@@ -10,7 +10,7 @@
     padding: 10px;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: left;
 
 }
 
@@ -26,7 +26,7 @@
     color: #2159e8;
 }
 
-.container-1 #share-with{
+.container-1 #share-btn {
     padding: 10px;
     margin-left: 5px;
     text-decoration: none;
@@ -34,9 +34,11 @@
     display:inline ;
 }
 
-.container-1 #share-with:hover {
+.container-1 #share-btn:hover {
     color: #2159e8;
 }
+
+
 
 
 FORM.tr, DIV.tr
@@ -107,7 +109,7 @@ DIV.header-group {
     font-size: x-large;
     padding-bottom: 10px;
     padding-top: 5px;
-    margin-top: 30px;
+    margin-top: 10px;
     color: #2159e8;
 }
 
@@ -138,10 +140,12 @@ li#myprojectlist{
 
 #btn-primary {
     padding: 6px;
+    margin: 3px;
 }
 
 #btn-danger {
     padding: 6px;
+    margin: 3px;
 }
 #btn-success {
     padding: 6px;
