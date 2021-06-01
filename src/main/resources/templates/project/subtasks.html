@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Subtasks</title>
-    <link href="css/tables/subtasks.css" rel="stylesheet">
     <link href="css/general.css" rel="stylesheet">
+    <link href="css/tables/subtasks.css" rel="stylesheet">
     <link href="css/tables/tasks.css" rel="stylesheet">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" rel="stylesheet">
@@ -17,51 +17,57 @@
 <div class="content-area">
 
 
-
     <div class="content-area1-1">
 
 
         <div class="container-1">
-          <div class="flex-box-1">
-             <div class="flex-box-2">
-                 <div>
-                      <h6>Your employees:</h6>
-                  </div>
-                    <div id="current-employees" th:each="emp, iter : ${session.allEmployees}">
-                <div th:id="${emp.id + 'info'}">
+            <div class="flex-box-1">
+
+                <div class="mover">
+                    <a href="share-project" id="share-btn" methods="get"> Share project</a>
+                </div>
+
+                <div class="mover">
+                    <span><a href="help-page" id="help" methods="get"> Help guide</a></span>
+                </div>
+
+                <div class="mover" id="return-to-project">
+                    <span></span> <a href="task-list" id="return-btn">Return to project</a></span>
+                </div>
+
+                <div class="flex-box-2">
                     <div>
-                        <span th:text="${emp.firstName + emp.lastName}" class="emp-name-hover"></span><br>
-                        <span th:if="${!emp.skills.isEmpty()}">Skills: </span>
-                        <span th:each="skill, iter : ${emp.skills}" class="skills-hover">
+                        <div>
+                            <h6>Your employees:</h6>
+                        </div>
+                        <div id="current-employees" th:each="emp, iter : ${session.allEmployees}">
+                            <div th:id="${emp.id + 'info'}">
+                                <div>
+                                    <span th:text="${emp.firstName + emp.lastName}" class="emp-name-hover"></span><br>
+                                    <span th:if="${!emp.skills.isEmpty()}">Skills: </span>
+                                    <span th:each="skill, iter : ${emp.skills}" class="skills-hover">
                             <span th:id="skill.id" th:if="${!iter.last}" th:text="${skill.name} + ', '"></span>
                             <span th:if="${iter.last}" th:text="${skill.name}"></span>
                         </span><br>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-             </div>
 
-            <div class="mover">
-                <a href="task-list" id="return-btn">Return to project</a>
-            </div>
+                <div class="mover" id="employee-manage">
+                    <span> <a href="employee-manager" id="edit-emp">Edit employees</a></span>
+                </div>
 
-            <div class="mover">
-                <a href="share-project" id="share-btn" methods="get"> Share project</a>
-            </div>
 
-            <div class="mover">
-                <a href="employee-manager" id="edit-emp" >Edit employees</a>
-            </div>
 
-              <div class="mover">
-                <span><a href="help-page" id="help" methods="get"> Help guide</a></span>
+
             </div>
-          </div>
         </div>
 
         <div id="task-name">
             <div id="your-task">
-               Current Task:
+                Current Task:
             </div>
             <div id="task-name-top" th:text="${session.taskName}"></div>
         </div>
@@ -96,7 +102,8 @@
                                                            rows="1"></textarea></span>
 
                                 <span class="td">
-                            <input class="btn btn-success" formaction="add-new-subtask" id="save-button-new-subtask" name="action"
+                            <input class="btn btn-success" formaction="add-new-subtask" id="save-button-new-subtask"
+                                   name="action"
                                    type="submit" value="Save">
                         </span>
                             </form>
@@ -129,27 +136,34 @@
 
 
                             <span class="td"><input id="subtask-name" name="subtask-name" th:value="${subtask.name}"
-                                                    type="text" th:class="${session.isReadOnly ? 'look-like-text' : ''}" th:readonly="${session.isReadOnly}"></span>
-
-
+                                                    type="text" th:class="${session.isReadOnly ? 'look-like-text' : ''}"
+                                                    th:readonly="${session.isReadOnly}"></span>
 
 
                             <span class="td"><input id="start-time" name="start-time" th:value="${subtask.startTime}"
-                                                    type="date" th:class="${session.isReadOnly ? 'look-like-text' : ''}" th:readonly="${session.isReadOnly}"></span>
+                                                    type="date" th:class="${session.isReadOnly ? 'look-like-text' : ''}"
+                                                    th:readonly="${session.isReadOnly}"></span>
                             <span class="td"><input id="end-time" name="end-time" th:value="${subtask.endTime}"
-                                                    type="date" th:class="${session.isReadOnly ? 'look-like-text' : ''}" th:readonly="${session.isReadOnly}"></span>
-                            <span class="td"><input id="hours-to-complete" name="hours-to-complete" th:value="${subtask.hoursToComplete}"
-                                                    type="number" th:class="${session.isReadOnly ? 'look-like-text' : ''}" th:readonly="${session.isReadOnly}"></span>
+                                                    type="date" th:class="${session.isReadOnly ? 'look-like-text' : ''}"
+                                                    th:readonly="${session.isReadOnly}"></span>
+                            <span class="td"><input id="hours-to-complete" name="hours-to-complete"
+                                                    th:value="${subtask.hoursToComplete}"
+                                                    type="number"
+                                                    th:class="${session.isReadOnly ? 'look-like-text' : ''}"
+                                                    th:readonly="${session.isReadOnly}"></span>
 
                             <span class="td"><textarea cols="30" id="subtask-description" name="subtask-description"
                                                        required
                                                        rows="1"
-                                                       th:text="${subtask.description}" th:class="${session.isReadOnly ? 'look-like-text' : ''}" th:readonly="${session.isReadOnly}"></textarea></span>
+                                                       th:text="${subtask.description}"
+                                                       th:class="${session.isReadOnly ? 'look-like-text' : ''}"
+                                                       th:readonly="${session.isReadOnly}"></textarea></span>
 
-                        <span class="td" th:if="${!session.isReadOnly}">
+                            <span class="td" th:if="${!session.isReadOnly}">
                             <input class="btn btn-success" formaction="save-subtask" id="save-subtask-btn" name="action"
                                    type="submit" value="Save">
-                            <input class="btn btn-danger" formaction="delete-subtask" id="delete-subtask-btn" name="action"
+                            <input class="btn btn-danger" formaction="delete-subtask" id="delete-subtask-btn"
+                                   name="action"
                                    type="submit" value="Delete">
                         </span>
                         </form>
@@ -162,7 +176,8 @@
                         <input name="subtask-id" th:value="${subtask.id}" type="hidden">
                         <label for="employee-adder">Add employee</label>
                         <select id="employee-adder" name="employee-id">
-                            <option th:each="emp : ${session.allEmployees}" th:if="${!subtask.isAssigned(emp.id)}" th:text="${emp.firstName + emp.lastName}"
+                            <option th:each="emp : ${session.allEmployees}" th:if="${!subtask.isAssigned(emp.id)}"
+                                    th:text="${emp.firstName + emp.lastName}"
                                     th:value="${emp.id}"></option>
                         </select>
                         <button class="btn btn-primary" id="add-employee-btn" type="submit">Add</button>
@@ -173,7 +188,8 @@
                         <input name="subtask-id" th:value="${subtask.id}" type="hidden">
                         <label for="employee-remover">Remove employee</label>
                         <select id="employee-remover" name="employee-id">
-                            <option th:each="emp : ${subtask.assignedEmployees}" th:text="${emp.firstName + emp.lastName}"
+                            <option th:each="emp : ${subtask.assignedEmployees}"
+                                    th:text="${emp.firstName + emp.lastName}"
                                     th:value="${emp.id}"></option>
                         </select>
                         <button class="btn btn-warning" id="remove-employee-btn" type="submit">Remove</button>
@@ -204,15 +220,16 @@
                 </div>
             </li>
             <div class="assigned-emp">
-            <li>
-                <div id="assigned-employee">
+                <li>
+                    <div id="assigned-employee">
 
 
-
-                    <span id="assigned-employee-span">Assigned employees: </span>
-                    <span th:each="emp, iter : ${subtask.getAssignedEmployees()}" th:class="${subtask.id}">
-                        <span th:id="${emp.id}" onmouseover="showDetails(this.id, this.parentElement.className)" onmouseout="hideDetails(this.parentElement.className)">
-                            <span id="show-employee-details" th:text="${emp.firstName + emp.lastName}" class="employee-name-subtasks"></span>
+                        <span id="assigned-employee-span">Assigned employees: </span>
+                        <span th:each="emp, iter : ${subtask.getAssignedEmployees()}" th:class="${subtask.id}">
+                        <span th:id="${emp.id}" onmouseover="showDetails(this.id, this.parentElement.className)"
+                              onmouseout="hideDetails(this.parentElement.className)">
+                            <span id="show-employee-details" th:text="${emp.firstName + emp.lastName}"
+                                  class="employee-name-subtasks"></span>
                             <span th:if="${!iter.last}" th:text="${', '}"></span>
                         </span>
 
@@ -220,19 +237,18 @@
 
                     </span><br>
 
-                    <!-- empty div to set employee info into -->
-                    <div th:id="${subtask.id + 'box'}" class="emp-info-hover" style="display: none"></div>
+                        <!-- empty div to set employee info into -->
+                        <div th:id="${subtask.id + 'box'}" class="emp-info-hover" style="display: none"></div>
 
 
-
-                    <span id="required-skill">Required skills: </span>
-                    <span th:each="skill, iter : ${subtask.requiredSkills}" class="required-skills">
+                        <span id="required-skill">Required skills: </span>
+                        <span th:each="skill, iter : ${subtask.requiredSkills}" class="required-skills">
                         <span th:id="skill.id" th:if="${!iter.last}" th:text="${skill.name} + ', '"></span>
                         <span th:if="${iter.last}" th:text="${skill.name}"></span>
                     </span>
-                </div>
-            </li>
-          </div>
+                    </div>
+                </li>
+            </div>
         </ul>
     </div>
 </div>
@@ -244,7 +260,7 @@
         let employee = document.getElementById(empId + "info");
         let subtask = document.getElementById(subtaskId + "box");
         subtask.innerHTML = employee.innerHTML;
-       subtask.style.display = "block";
+        subtask.style.display = "block";
     }
 
     function hideDetails(subtaskId) {

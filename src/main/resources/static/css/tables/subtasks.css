@@ -19,7 +19,7 @@
 }
 
 .flex-box-2 {
-    margin-right: 150px;
+    margin-left: 600px;
     font-size: x-small;
 
 
@@ -74,6 +74,9 @@
     text-align: center;
 }
 
+
+/* TABLE header */
+
 .mover #help{
     padding: 15px;
     color: #525252;
@@ -81,7 +84,29 @@
 
 }
 
+
+#return-btn {
+    margin-right: 20px;
+    padding: 15px;
+    color: #525252;
+    text-decoration: none;
+}
+
+.mover#employee-manage {
+    margin-right: 20px;
+    padding: 15px;
+    color: #525252;
+    text-decoration: none;
+}
+
 .mover#edit-emp{
+    padding: 15px;
+    color: #525252;
+    text-decoration: none;
+}
+
+.mover#return-btn {
+
     padding: 15px;
     color: #525252;
     text-decoration: none;
