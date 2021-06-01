@@ -56,10 +56,6 @@ public class Task {
         return estimatedHoursPrDay;
     }
 
-    public ArrayList<Subtask> getSubtasks() {
-        return TaskRepository.getRelatedSubtasks(id);
-    }
-
     public int getEstimatedHoursTotal() { return estimatedHoursTotal; }
 
     public String getName() {

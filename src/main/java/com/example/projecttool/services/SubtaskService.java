@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class SubtaskService {
     public static ArrayList<Subtask> getSubtasks(int taskId) {
-        return TaskRepository.getRelatedSubtasks(taskId);
+        return SubtaskRepository.getRelatedSubtasks(taskId);
     }
 
     public static void createSubtask(int taskId, String subtaskName, String subtaskDescription,

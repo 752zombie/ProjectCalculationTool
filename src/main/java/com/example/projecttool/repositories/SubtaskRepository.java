@@ -4,10 +4,7 @@ import com.example.projecttool.models.project.Employee;
 import com.example.projecttool.models.project.Skill;
 import com.example.projecttool.models.project.Subtask;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class SubtaskRepository {
@@ -192,6 +189,35 @@ public class SubtaskRepository {
         }
 
         return employees;
+    }
+
+    public static ArrayList<Subtask> getRelatedSubtasks(int taskId) {
+        Connection connection = DatabaseConnection.getConnection();
+        ArrayList<Subtask> subtasks = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM subtasks WHERE task = ? ORDER BY id");
+            statement.setInt(1, taskId);
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("subtask_name");
+                String description = resultSet.getString("subtask_description");
+                Date startTime = resultSet.getDate("start_time");
+                Date endTime = resultSet.getDate("end_time");
+                int hoursToComplete = resultSet.getInt("hours_to_complete");
+
+                Subtask subtask = new Subtask(id, name, description, startTime, endTime,
+                        SubtaskRepository.getAssignedEmployees(id), SubtaskRepository.getRequiredSkills(id), hoursToComplete);
+                subtasks.add(subtask);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error could not find any subtasks for that task");
+        }
+
+        return subtasks;
     }
 
 
