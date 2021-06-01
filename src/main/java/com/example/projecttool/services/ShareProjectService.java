@@ -6,6 +6,8 @@ import com.example.projecttool.repositories.ShareProjectRepository;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+// Matthias
+
 public class ShareProjectService {
 
     public static boolean shareProject(String userEmail, String receiverMail, String editOrRead, int projectId) throws SQLException {

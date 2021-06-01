@@ -5,6 +5,8 @@ import com.example.projecttool.repositories.UserRepository;
 
 import java.sql.SQLException;
 
+// Magnus
+
 public class ProfileService {
 
     public static void updateUserInfo(int userId, UserAttribute attributeToUpdate, String newValue) throws SQLException {

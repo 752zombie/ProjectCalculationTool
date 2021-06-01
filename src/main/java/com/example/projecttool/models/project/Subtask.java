@@ -3,6 +3,8 @@ package com.example.projecttool.models.project;
 import java.sql.Date;
 import java.util.List;
 
+// Magnus
+
 public class Subtask {
 
     private int id;

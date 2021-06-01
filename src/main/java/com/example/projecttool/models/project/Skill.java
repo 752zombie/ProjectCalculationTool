@@ -1,5 +1,8 @@
 package com.example.projecttool.models.project;
 
+
+// Najla
+
 public class Skill {
     private String name;
     private int id;

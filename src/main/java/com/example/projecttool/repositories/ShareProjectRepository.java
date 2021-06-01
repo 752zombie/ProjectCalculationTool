@@ -6,6 +6,8 @@ import com.example.projecttool.models.project.Project;
 import java.sql.*;
 import java.util.ArrayList;
 
+// Najla & Matthias
+
 public class ShareProjectRepository {
 
 

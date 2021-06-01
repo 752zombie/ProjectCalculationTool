@@ -9,6 +9,8 @@ import com.example.projecttool.repositories.TaskRepository;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+// Magnus
+
 public class SubtaskService {
     public static ArrayList<Subtask> getSubtasks(int taskId) {
         return SubtaskRepository.getRelatedSubtasks(taskId);

@@ -1,5 +1,7 @@
 package com.example.projecttool.models.user;
 
+// Magnus
+
 public class User {
     private int id;
     private String name;

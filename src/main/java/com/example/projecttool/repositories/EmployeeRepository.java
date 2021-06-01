@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+// Magnus
+
 public class EmployeeRepository {
     public static void changeEmployeeName(int employeeId, String firstName, String lastName) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();

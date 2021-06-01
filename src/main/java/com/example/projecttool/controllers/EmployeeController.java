@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+// Magnus
+
 @Controller
 public class EmployeeController {
 

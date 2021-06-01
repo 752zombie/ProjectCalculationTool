@@ -2,6 +2,8 @@ package com.example.projecttool.models.project;
 
 import java.util.List;
 
+// Magnus
+
 public class Employee {
     private int id;
     private String firstName;

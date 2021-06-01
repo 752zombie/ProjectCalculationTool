@@ -4,6 +4,8 @@ import com.example.projecttool.models.project.Task;
 
 import java.util.ArrayList;
 
+// Matthias
+
 public class PrioritySorter {
 
   public static void sortTasksByPriority(ArrayList<Task> taskList){

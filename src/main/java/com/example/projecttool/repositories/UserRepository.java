@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// Matthias
+
 public class UserRepository {
 
     public static void addUser(String name, String email, String password) throws SQLException {

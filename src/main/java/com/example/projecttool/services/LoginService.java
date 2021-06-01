@@ -5,6 +5,8 @@ import com.example.projecttool.repositories.UserRepository;
 
 import java.sql.SQLException;
 
+// Magnus
+
 public class LoginService {
 
     public static User createUser(String name, String email, String password) throws SQLException {

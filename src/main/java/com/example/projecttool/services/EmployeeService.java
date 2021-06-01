@@ -9,6 +9,8 @@ import com.example.projecttool.repositories.SubtaskRepository;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+// Matthias & Magnus
+
 public class EmployeeService {
     public static ArrayList<Employee> getAllEmployees(int userId) throws SQLException {
         return EmployeeRepository.getAllEmployees(userId);

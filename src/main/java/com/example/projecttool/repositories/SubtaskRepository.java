@@ -7,6 +7,8 @@ import com.example.projecttool.models.project.Subtask;
 import java.sql.*;
 import java.util.ArrayList;
 
+// Magnus & Matthias
+
 public class SubtaskRepository {
 
     public static void addEmployeeToSubtask(int subtaskId, int employeeId) throws SQLException {
