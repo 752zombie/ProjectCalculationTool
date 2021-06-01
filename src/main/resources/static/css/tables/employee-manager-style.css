@@ -26,7 +26,7 @@ position: center;
 }
 
 .container-1 {
-
+    margin-right: 950px;
     margin-bottom: 25px;
 
 }
@@ -65,4 +65,11 @@ position: center;
     line-height: 0.5;
     height: 24px;
 
+}
+
+#helper, #return-to-subtasks {
+
+    padding: 15px;
+    color: #525252;
+    text-decoration: none;
 }
