@@ -21,11 +21,11 @@
         <div class="container-1">
 
             <div>
-                <span><a href="/share-project" id="share-btn" methods="get"> Share project</a></span>
+                <span><a href="share-project" id="share-btn" methods="get"> Share project</a></span>
             </div>
 
             <div>
-                <span><a href="/help-page" class="dropbtn" id="help" methods="get"> Help guide</a></span>
+                <span><a href="help-page" class="dropbtn" id="help" methods="get"> Help guide</a></span>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
 
 
             <!-- ADD NEW ROW TO TASK -->
-            <form action="/add-row-to-tasks" method="post" class="tr">
+            <form action="add-row-to-tasks" method="post" class="tr">
 
                 <!-- Priority -->
                 <select name="priority" required>
@@ -111,7 +111,7 @@
 
                 <div class="row-group">
 
-                    <form method="post" action="/edit-task" class="tr" th:each="task : ${session.projectTasks}">
+                    <form method="post" action="edit-task" class="tr" th:each="task : ${session.projectTasks}">
                         <input type="hidden" th:value="${task.id}" name="id">
 
                         <!-- SELECT priority -->
@@ -166,9 +166,9 @@
                         <span class="td">
                             <input th:if="${!session.isReadOnly}" type="submit" class="btn btn-success" id="btn-success" value="Save" name="action" formaction="/edit-task">
                             <input th:if="${!session.isReadOnly}" type="submit" class="btn btn-danger" id="btn-danger" value="Delete" name="action"
-                                formaction="/edit-task">
+                                formaction="edit-task">
                             <input type="submit" class="btn btn-primary" id="btn-primary" value="View subtasks" name="action"
-                                formaction="/edit-task-with-subtasks">
+                                formaction="edit-task-with-subtasks">
                         </span>
 
 

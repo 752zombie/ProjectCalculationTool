@@ -42,19 +42,19 @@
              </div>
 
             <div class="mover">
-                <a href="/task-list" id="return-btn">Return to project</a>
+                <a href="task-list" id="return-btn">Return to project</a>
             </div>
 
             <div class="mover">
-                <a href="/share-project" id="share-btn" methods="get"> Share project</a>
+                <a href="share-project" id="share-btn" methods="get"> Share project</a>
             </div>
 
             <div class="mover">
-                <a href="/employee-manager" id="edit-emp" >Edit employees</a>
+                <a href="employee-manager" id="edit-emp" >Edit employees</a>
             </div>
 
               <div class="mover">
-                <span><a href="/help-page" id="help" methods="get"> Help guide</a></span>
+                <span><a href="help-page" id="help" methods="get"> Help guide</a></span>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="row-group">
-                            <form action="/add-new-subtask" class="tr" method="post">
+                            <form action="add-new-subtask" class="tr" method="post">
                                 <input name="task-id" th:value="${session.taskId}" type="hidden">
 
                                 <span class="td"><input name="subtask-name" type="text"></span>
@@ -96,7 +96,7 @@
                                                            rows="1"></textarea></span>
 
                                 <span class="td">
-                            <input class="btn btn-success" formaction="/add-new-subtask" id="save-button-new-subtask" name="action"
+                            <input class="btn btn-success" formaction="add-new-subtask" id="save-button-new-subtask" name="action"
                                    type="submit" value="Save">
                         </span>
                             </form>
@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="row-group">
-                        <form action="/edit-task" class="tr" method="post">
+                        <form action="edit-task" class="tr" method="post">
                             <input name="task-id" th:value="${session.taskId}" type="hidden">
                             <input name="subtask-id" th:value="${subtask.id}" type="hidden">
 
@@ -147,9 +147,9 @@
                                                        th:text="${subtask.description}" th:class="${session.isReadOnly ? 'look-like-text' : ''}" th:readonly="${session.isReadOnly}"></textarea></span>
 
                         <span class="td" th:if="${!session.isReadOnly}">
-                            <input class="btn btn-success" formaction="/save-subtask" id="save-subtask-btn" name="action"
+                            <input class="btn btn-success" formaction="save-subtask" id="save-subtask-btn" name="action"
                                    type="submit" value="Save">
-                            <input class="btn btn-danger" formaction="/delete-subtask" id="delete-subtask-btn" name="action"
+                            <input class="btn btn-danger" formaction="delete-subtask" id="delete-subtask-btn" name="action"
                                    type="submit" value="Delete">
                         </span>
                         </form>
@@ -157,7 +157,7 @@
                 </div>
 
                 <div class="container-employee-manager" id="container-employee-manager" th:if="${!session.isReadOnly}">
-                    <form action="/add-employee-to-subtask" method="post"
+                    <form action="add-employee-to-subtask" method="post"
                           th:if="${subtask.assignedEmployees.size() != session.allEmployees.size()}">
                         <input name="subtask-id" th:value="${subtask.id}" type="hidden">
                         <label for="employee-adder">Add employee</label>
@@ -168,7 +168,7 @@
                         <button class="btn btn-primary" id="add-employee-btn" type="submit">Add</button>
                     </form>
 
-                    <form action="/remove-employee-from-subtask" method="post"
+                    <form action="remove-employee-from-subtask" method="post"
                           th:if="${!subtask.assignedEmployees.isEmpty()}">
                         <input name="subtask-id" th:value="${subtask.id}" type="hidden">
                         <label for="employee-remover">Remove employee</label>
@@ -179,7 +179,7 @@
                         <button class="btn btn-warning" id="remove-employee-btn" type="submit">Remove</button>
                     </form>
 
-                    <form action="/add-skill-to-subtask" method="post"
+                    <form action="add-skill-to-subtask" method="post"
                           th:if="${subtask.requiredSkills.size() != session.allSkills.size()}">
                         <input name="subtask-id" th:value="${subtask.id}" type="hidden">
                         <label for="skill-adder">Add required skill: </label>
@@ -191,7 +191,7 @@
                         <button class="btn btn-primary" id="skill-adder-btn" type="submit">Add</button>
                     </form>
 
-                    <form action="/remove-skill-from-subtask" method="post"
+                    <form action="remove-skill-from-subtask" method="post"
                           th:if="${!subtask.requiredSkills.isEmpty()}">
                         <input name="subtask-id" th:value="${subtask.id}" type="hidden">
                         <label for="skill-remover">Remove skill</label>

@@ -6,7 +6,7 @@
     <div class="wrapper">
 
       <div class="header">
-        <div class="logo"> <a href="/">
+        <div class="logo"> <a href="home">
           <img src="image/logo.png" alt="Frontpage" style="max-width: 60%; min-height: 150%">
           </a>
         </div>
@@ -24,16 +24,16 @@
                      <li class="dropdown">
                          <a href="/create-project">Manage projects</a>
                          <div class="dropdown-content">
-                             <a href="/create-project">Create project</a>
-                             <a href="/see-all-projects">My projects</a>
-                             <a href="/shared-with-me">Shared projects</a>
-                             <a href="/employee-manager">Employee manager</a>
+                             <a href="create-project">Create project</a>
+                             <a href="see-all-projects">My projects</a>
+                             <a href="shared-with-me">Shared projects</a>
+                             <a href="employee-manager">Employee manager</a>
                          </div>
                      </li>
                      <li class="dropdown">
-                                <a href="/profile" th:text="${session.user.getName()}" class="dropbtn"></a>
+                                <a href="profile" th:text="${session.user.getName()}" class="dropbtn"></a>
                          <div class="dropdown-content">
-                             <a href="/profile">Edit profile</a>
+                             <a href="profile">Edit profile</a>
                              <a href="sign-out">Sign out</a>
                          </div>
                      </li>

@@ -10,4 +10,9 @@ public class GeneralController {
         return "index";
     }
 
+    @GetMapping("/")
+    public String homePage2() {
+        return "redirect:home";
+    }
+
 }
