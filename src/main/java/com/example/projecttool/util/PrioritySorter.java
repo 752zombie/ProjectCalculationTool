@@ -16,9 +16,9 @@ public class PrioritySorter {
         if(p1 == null) return 1;
         if(p2 == null) return -1;
         if(p1.equals(p2)) return 0;
-        if(p1.equals("high") && (p2.equals("medium") || p2.equals("low")))
+        if(p1.equals("h") && (p2.equals("m") || p2.equals("l")))
             return -1;
-        if(p1.equals("medium") && p2.equals("low"))
+        if(p1.equals("m") && p2.equals("l"))
             return -1;
         return 1;
       });
