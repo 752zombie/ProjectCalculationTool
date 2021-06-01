@@ -8,10 +8,6 @@ public class ProjecttoolApplication {
 
     public static void main(String[] args) {
 
-
-
-
-
         SpringApplication.run(ProjecttoolApplication.class, args);
     }
 
